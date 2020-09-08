@@ -421,21 +421,21 @@ def Check_Pattern_State_13(K0,K1,K2,K3,c):
 # ---------------- Function to go back to state 8 and check for the pattern of the faulty nibble -------------
 def Check_Pattern_State_8(faulty_nibble,K0prime_xor_k1):
     
-    if faulty_nibble in [0,5,10,15]:  # to ditribute the faulty nibble to faulty column 
+    if faulty_nibble in [0,13,10,7]:  # to ditribute the faulty nibble to faulty column 
         faulty_column=0
-    if faulty_nibble in [4,9,14,3]:
+    if faulty_nibble in [4,1,14,11]:
         faulty_column=1
-    if faulty_nibble in [8,13,2,7]:
+    if faulty_nibble in [8,5,2,15]:
         faulty_column=2
-    if faulty_nibble in [12,1,6,11]:
+    if faulty_nibble in [12,9,6,3]:
         faulty_column=3
         
     
                     # Different Quasi-active nibble states for fault in each of the four columns
     Pattern_S8 = [ [[8,1,1,1],[1,8,1,1],[1,1,8,1],[1,1,1,8]],
-               [[1,8,1,1],[1,1,8,1],[1,1,1,8],[1,1,1,1]],
-               [[1,1,8,1],[1,1,1,8],[1,1,1,1],[8,1,1,1]],
-               [[1,1,1,8],[1,1,1,1],[8,1,1,1],[1,8,1,1]]];
+               [[1,1,1,8],[8,1,1,1],[1,8,1,1],[1,1,8,1]],
+               [[1,1,8,1],[1,1,1,8],[8,1,1,1],[1,8,1,1]],
+               [[1,8,1,1],[1,1,8,1],[1,1,1,8],[8,1,1,1]]];
 
     # Now that we know the fault position we can go back one more round and store the values of State 11
     c_1=[]
