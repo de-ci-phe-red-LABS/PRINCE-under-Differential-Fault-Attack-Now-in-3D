@@ -547,8 +547,8 @@ for i in range(0,64):  #converting bitarray to integer form
 KEY_K0prime = KEY_K1 ^ KEY_K0prime_xor_k1 # Getting the value of K0'
 
 
-print("K1 = ",KEY_K1)       # Displaying  K1
-print("K0' = ",KEY_K0prime) # Displaying  K0'
+print("K1 = ",hex(KEY_K1))       # Displaying  K1
+print("K0' = ",hex(KEY_K0prime)) # Displaying  K0'
 
 
 
