@@ -288,11 +288,11 @@ def Check_Balanced_Property_State_13(c):
 # In[4]:
 
 
-#----------------- Function to check for Pattern in State 13 to get K0'_xor_K1 and faulty nibble  -----------------------------------
+#----------------- Function to check for Pattern in State 12 to get K0'_xor_K1 and faulty nibble  -----------------------------------
 
-def Check_Pattern_State_13(K0,K1,K2,K3,c):
+def Check_Pattern_State_12(K0,K1,K2,K3,c):
     
-                          #Columnwise Pattern in State 13 for each of the 16 different faut positions
+                          #Columnwise Pattern in State 12 for each of the 16 different faut positions
 
     Pattern0=[[6,6,6,5],[5,6,6,5],[6,6,6,5],[5,6,6,6],[6,6,5,6],[6,7,5,5],[6,6,6,6],[6,5,5,5],[7,6,5,6],[6,5,6,7],[5,6,5,6],[6,5,6,6],[5,5,7,6],[6,6,6,6],[5,5,6,6],[6,6,6,6]];
     Pattern1=[[6,5,6,6],[6,6,6,6],[5,5,6,6],[5,6,7,5],[5,6,6,6],[6,6,6,5],[6,7,6,5],[6,6,6,6],[6,6,5,6],[6,6,6,6],[7,6,5,6],[5,6,5,5],[5,6,6,6],[6,5,5,7],[6,5,6,5],[6,5,5,6]];
@@ -532,7 +532,7 @@ c = Generate_faulty_ciphertexts()               # Calling the function to genera
  
 K0,K1,K2,K3=Check_Balanced_Property_State_13(c) # Calling the function to get the values of K0,K1,K2,K3 i.e. reduced possible columnwise key guesses of K0' xor K1 
 
-faulty_nibble,K0prime_xor_k1 = Check_Pattern_State_13(K0,K1,K2,K3,c)  # Calling the function to get the exact fault position and value of K0' xor K1
+faulty_nibble,K0prime_xor_k1 = Check_Pattern_State_12(K0,K1,K2,K3,c)  # Calling the function to get the exact fault position and value of K0' xor K1
 
 print("FAULTY nibble was ",faulty_nibble)  # Displaying  fault position
 print("K0' xor K1 = ",K0prime_xor_k1)      # Displaying  K0' xor K1
