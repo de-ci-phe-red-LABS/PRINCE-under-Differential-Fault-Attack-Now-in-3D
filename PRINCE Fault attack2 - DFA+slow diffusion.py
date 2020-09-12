@@ -179,7 +179,7 @@ def Generate_faulty_ciphertexts():
             data= (data ^ k0prime) 
             c.append(data)
             
-    #print(k0," ",k1,"and",k0prime," ",k1^k0prime) 
+    print(k0," ",k1,"and",k0prime," ",k1^k0prime) 
     return c
 
 
