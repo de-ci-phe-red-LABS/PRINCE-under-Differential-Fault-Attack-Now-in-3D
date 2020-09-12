@@ -188,7 +188,7 @@ def Generate_faulty_ciphertexts():
 
 #---------- Function to reduce key space of k0' xor k1 by matching with state 4 for 1st ciphertext ------------
 
-def match_state_4_1(r,q):
+def match_state_5_1(r,q):
     K0=[]
     K1=[]
     K2=[]
@@ -219,7 +219,7 @@ def match_state_4_1(r,q):
 
 #----- Function to further reduce the key space of k0' xor k1 by matching with state 4 for 2nd ciphertext -----
 
-def match_state_4_2(K0,K1,K2,K3,r,q):
+def match_state_5_2(K0,K1,K2,K3,r,q):
     k00=[]
     k11=[]
     k22=[]
@@ -277,7 +277,7 @@ def match_state_4_2(K0,K1,K2,K3,r,q):
 
 #----- Function to further reduce the key space of k0' xor k1 by matching with state 4 for 3rd ciphertext -----
 
-def match_state_4_3(k00,k11,k22,k33,r,q):
+def match_state_5_3(k00,k11,k22,k33,r,q):
     k000=[]
     k111=[]
     k222=[]
@@ -335,7 +335,7 @@ def match_state_4_3(k00,k11,k22,k33,r,q):
 #----- Function to further reduce the key space of k0' xor k1 by matching with state 4 for 4th ciphertext -----
 
 
-def match_state_4_4(k000,k111,k222,k333,r,q):
+def match_state_5_4(k000,k111,k222,k333,r,q):
     k0000=[]
     k1111=[]
     k2222=[]
@@ -411,7 +411,7 @@ def merge(k0000,k1111,k2222,k3333):
 # --------- Function to reduce key spaces of k0' xor k1 and also guess column wise key space of k1 ------------
 
 
-def match_state_2_1(k0123,r,q):
+def match_state_3_1(k0123,r,q):
     k0f=[]
     k1f=[]
     k2f=[]
@@ -463,7 +463,7 @@ def match_state_2_1(k0123,r,q):
 
 # -------- Function to reduce key spaces of k0' xor k1 and further reduce column wise key space of k1 ---------
 
-def match_state_2_2(k0123f,r,q):
+def match_state_3_2(k0123f,r,q):
     k00f=[]
     k11f=[]
     k22f=[]
@@ -567,7 +567,7 @@ def merge_1(k0123ff,k0f,k00f,k1f,k11f,k2f,k22f,k3f,k33f):
 
 # -------- Function to reduce key spaces of k0' xor k1 and further reduce column wise key space of k1 ---------
 
-def match_state_2_3(keyd,r,q):
+def match_state_3_3(keyd,r,q):
     k00f=[]
     k11f=[]
     k22f=[]
@@ -617,7 +617,7 @@ def match_state_2_3(keyd,r,q):
 
 # -------- Function to reduce key spaces of k0' xor k1 and further reduce column wise key space of k1 ---------
 
-def match_state_2_4(keyd,r,q):
+def match_state_3_4(keyd,r,q):
     k00f=[]
     k11f=[]
     k22f=[]
@@ -702,19 +702,19 @@ else:
     c_1.append(c[1])
     c_1.append(c[2])"""
 
-k0,k1,k2,k3 = match_state_4_1(c[0],c[1])  # Function to refine the key guess for k0' xor k1
-k0,k1,k2,k3 = match_state_4_2(k0,k1,k2,k3,c[0],c[2]) # Function to further refine the key guess for k0' xor k1
-k0,k1,k2,k3 = match_state_4_3(k0,k1,k2,k3,c[0],c[3]) # Function to further refine the key guess for k0' xor k1
-k0,k1,k2,k3 = match_state_4_4(k0,k1,k2,k3,c[0],c[4]) # Function to further refine the key guess for k0' xor k1
+k0,k1,k2,k3 = match_state_5_1(c[0],c[1])  # Function to refine the key guess for k0' xor k1
+k0,k1,k2,k3 = match_state_5_2(k0,k1,k2,k3,c[0],c[2]) # Function to further refine the key guess for k0' xor k1
+k0,k1,k2,k3 = match_state_5_3(k0,k1,k2,k3,c[0],c[3]) # Function to further refine the key guess for k0' xor k1
+k0,k1,k2,k3 = match_state_5_4(k0,k1,k2,k3,c[0],c[4]) # Function to further refine the key guess for k0' xor k1
 
 k0123 = merge(k0,k1,k2,k3)                   # Funciton to merge the 4 sets of  key guesses of each column
 
-k0123,k0_1,k1_1,k2_1,k3_1 = match_state_2_1(k0123,c[0],c[1]) #Function to refine the key guess for k0' xor k1 and k1
-k0123,k0_2,k1_2,k2_2,k3_2 = match_state_2_2(k0123,c[0],c[2]) #Function to further refine the key guess for k0' xor k1 and k1
+k0123,k0_1,k1_1,k2_1,k3_1 = match_state_3_1(k0123,c[0],c[1]) #Function to refine the key guess for k0' xor k1 and k1
+k0123,k0_2,k1_2,k2_2,k3_2 = match_state_3_2(k0123,c[0],c[2]) #Function to further refine the key guess for k0' xor k1 and k1
 k0123,k0,k1,k2,k3 = merge_1(k0123,k0_1,k0_2,k1_1,k1_2,k2_1,k2_2,k3_1,k3_2) #Function to take intersection of the two sets of column spaces and redice k0' xor k1  
-k0123,k0_2,k1_2,k2_2,k3_2 = match_state_2_3(k0123,c[0],c[3]) #Function to further refine the key guess for k0' xor k1 and k1
+k0123,k0_2,k1_2,k2_2,k3_2 = match_state_3_3(k0123,c[0],c[3]) #Function to further refine the key guess for k0' xor k1 and k1
 k0123,k0,k1,k2,k3 = merge_1(k0123,k0,k0_2,k1,k1_2,k2,k2_2,k3,k3_2)
-k0123,k0_2,k1_2,k2_2,k3_2 = match_state_2_4(k0123,c[0],c[4]) #Function to further refine the key guess for k0' xor k1 and k1
+k0123,k0_2,k1_2,k2_2,k3_2 = match_state_3_4(k0123,c[0],c[4]) #Function to further refine the key guess for k0' xor k1 and k1
 k0123,k0,k1,k2,k3 = merge_1(k0123,k0,k0_2,k1,k1_2,k2,k2_2,k3,k3_2)
 
 print(k0123) # printing the final value of k0' xor k1
