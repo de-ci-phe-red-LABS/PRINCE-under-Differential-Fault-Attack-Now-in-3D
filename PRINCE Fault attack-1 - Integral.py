@@ -188,6 +188,7 @@ def Generate_faulty_ciphertexts():
             data2= (data2 ^ k0prime)
             data1= (data1 ^ k0prime) 
             c.append(data1)
+    print(k0," ",k1," ",k0prime," ",k1^k0prime)
     return c
     
     
